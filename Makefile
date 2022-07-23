@@ -1,8 +1,8 @@
 CC := g++ -std=c++2a
 TARGET_EXEC := out
 CFLAGS  := -Wall
-SRCS := vector1.cpp
-OBJS := vector1.o
+SRCS := free-store-pointer.cpp
+OBJS := free-store-pointer.o
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
