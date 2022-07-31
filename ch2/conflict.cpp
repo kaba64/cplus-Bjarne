@@ -2,5 +2,5 @@
 
 auto main() -> int
 {
-  std::cout<<"Mian branch!";
+  std::cout<<"It is Mian branch!";
 }
