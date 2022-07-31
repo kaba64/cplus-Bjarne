@@ -1,8 +1,8 @@
 CC := g++ -std=c++2a -Wall
 TARGET_EXEC := out
 CFLAGS  := -Wall
-SRCS := namespace.cpp
-OBJS := namespace.o
+SRCS := hello.cpp
+OBJS := hello.o
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
