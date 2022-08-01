@@ -1,0 +1,7 @@
+#include <iostream>
+
+auto main() -> int
+{
+  string name=29;
+  int number = "Kazem"
+}

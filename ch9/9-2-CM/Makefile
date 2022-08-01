@@ -1,8 +1,8 @@
 CC := g++ -std=c++2a -Wall
 TARGET_EXEC := out
 CFLAGS  := -Wall
-SRCS := hello_world.cpp
-OBJS := hello_world.o
+SRCS := class-member.cpp
+OBJS := class-member.o
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
@@ -10,3 +10,5 @@ $(OBJS): $(SRCS)
 	$(CC) -c $<
 clean:
 	rm $(OBJS) $(TARGET_EXEC) *~
+run:
+	@./$(TARGET_EXEC)
