@@ -1,12 +1,13 @@
 CC := g++ -std=c++2a -Wall
 TARGET_EXEC := out
 CFLAGS  := -Wall
-SRCS := safe-conversion.cpp
-OBJS := safe-conversion.o
+SRCS := using-token.cpp
+OBJS=$(SRCS:.cpp=.o)
+
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
-$(OBJS): $(SRCS)
+using-token.o: using-token.cpp
 	$(CC) -c $<
 clean:
 	rm $(OBJS) $(TARGET_EXEC) *~

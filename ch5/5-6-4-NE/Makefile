@@ -1,12 +1,13 @@
 CC := g++ -std=c++2a -Wall
 TARGET_EXEC := out
 CFLAGS  := -Wall
-SRCS := constant-expression.cpp
-OBJS := constant-expression.o
+SRCS := narrowing-error.cpp
+OBJS=$(SRCS:.cpp=.o)
+
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
-$(OBJS): $(SRCS)
+narrowing-error.o: narrowing-error.cpp
 	$(CC) -c $<
 clean:
 	rm $(OBJS) $(TARGET_EXEC) *~
