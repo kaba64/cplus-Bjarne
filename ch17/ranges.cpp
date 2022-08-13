@@ -2,7 +2,6 @@
 
 auto main() -> int
 {
-  
   double* p = new double;
   double* q = new double[1000];
   q[700] = 800.;
