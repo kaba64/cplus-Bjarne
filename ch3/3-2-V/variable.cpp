@@ -4,5 +4,5 @@
 auto main() -> int
 {
   std::string name="Kazem";
-  int number = "Kazem"
+  //int number = "Kazem" /*It will error*/
 }
