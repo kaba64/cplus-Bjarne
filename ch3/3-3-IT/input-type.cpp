@@ -2,7 +2,7 @@
 
 auto main() -> int
 {
-  std::cout<<"PLease enter your first name anf age\n";
+  std::cout<<"PLease enter your first name and age\n";
   std::string first_name;
   int age;
   std::cin>>first_name;
