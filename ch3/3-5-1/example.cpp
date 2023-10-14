@@ -8,9 +8,10 @@ auto main() -> int
   int count{0};
   
   while (std::cin>>current) {
-    if (previous == current)
+    if (previous == current){
       count+=1;
-    std::cout << "repeated word: " << current << '\n';
+      std::cout << "repeated word: " << current << '\n';
+    }
     previous = current;
   }
   std::cout<<"The number of the repetition is = "<<count<<"\n";

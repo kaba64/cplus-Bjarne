@@ -1,8 +1,8 @@
-CC := g++ -std=c++2a -Wall
+CC := g++ -std=c++20 -Wall
 TARGET_EXEC := out
 CFLAGS  := -Wall
 SRCS := example.cpp
-OBJS := example.o
+OBJS = $(SRCS:.cpp=.o)
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
