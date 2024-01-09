@@ -1,13 +1,7 @@
-CC := g++ -std=c++2a -Wall
+CC := g++ -std=c++20 -Wall -fmax-errors=3
 TARGET_EXEC := out
-CFLAGS  := -Wall
-<<<<<<< HEAD
-SRCS := namespace.cpp
-OBJS := namespace.o
-=======
-SRCS := branch-linux.cpp
-OBJS := branch-linux.o
->>>>>>> ch8-linux
+SRCS := pass-reference.cpp
+OBJS=$(SRCS:.cpp=.o)
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
@@ -15,3 +9,5 @@ $(OBJS): $(SRCS)
 	$(CC) -c $<
 clean:
 	rm $(OBJS) $(TARGET_EXEC) *~
+run:
+	@./$(TARGET_EXEC)
