@@ -1,6 +1,6 @@
 CC := g++ -std=c++20 -Wall -fmax-errors=3
 TARGET_EXEC := out
-SRCS := pass-reference.cpp
+SRCS := expression-evaluation.cpp
 OBJS=$(SRCS:.cpp=.o)
 
 $(TARGET_EXEC): $(OBJS)
