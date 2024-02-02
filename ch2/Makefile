@@ -6,7 +6,7 @@ OBJS := hello_world.o
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
-$(OBJS): $(SRCS)
-	$(CC) -c $<
+%.o: %.cpp
+        $(CC) -c $< -o $@
 clean:
 	rm $(OBJS) $(TARGET_EXEC) *~

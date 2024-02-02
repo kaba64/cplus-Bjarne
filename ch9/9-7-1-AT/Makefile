@@ -1,8 +1,8 @@
-CC := g++ -std=c++2a -Wall
+CC := g++ -std=c++20 -Wall -fmax-errors=3
 TARGET_EXEC := out
-CFLAGS  := -Wall
-SRCS := struct-function.cpp
-OBJS := struct-function.o
+SRCS := argumentType.cpp
+OBJS=$(SRCS:.cpp=.o)
+
 
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
