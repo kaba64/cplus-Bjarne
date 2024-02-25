@@ -17,7 +17,7 @@ private:
 };
 
 Year::Year(int x): y{x} {
-  if (x<min || max<=x){
+  if (x<min || max<x){
     std::string errorOut{"Invalid year. Enter a year in the range ["+std::to_string(min)+
 			 ","+std::to_string(max)+"]."};
     throw std::runtime_error(errorOut);
@@ -34,12 +34,18 @@ Month int_to_month(const int x){
   return Month(x);
 }
 
+Month operator++(Month& m){
+  m = (m == Month::dec) ? Month::jan : Month(static_cast<int>(m)+1);
+  return m;
+}
+
 class Date{
 public:
   Date(const Year yi,const Month mi,const int di)
     :y{yi},m{mi},d{di}{
       if(!is_valid()) throw std::runtime_error("Invalid Date");
   }
+  Date& operator++();
   void add_day(int n);
   int year()const{return y.getYear();}
   int month()const{return static_cast<int>(m);}
@@ -65,30 +71,38 @@ bool Date::is_valid(){
   return false;
 }
 
-void Date::add_day(const int n){
-  if(static_cast<int>(m)==12 && (d+n-1)==31){
+Date& Date::operator++(){
+  if(static_cast<int>(m)==12 && d==31){
     ++y;
-    m = Month::jan;
+    ++m;
     d = 1;
-  }else if(static_cast<int>(m)==2 && (d+n-1)==28){
-
+  }else if(static_cast<int>(m)==2 && d==28){
+    ++m;
+    d = 1;
   }else if((static_cast<int>(m)==4 || static_cast<int>(m)==6 ||
-	   static_cast<int>(m)==9 || static_cast<int>(m)==11) &&
-	  (d+n-1)==30){
-
-  }else if((d+n-1)>=31){
-    m = int_to_month(static_cast<int>(m)+1);
+	    static_cast<int>(m)==9 || static_cast<int>(m)==11) &&
+	   d==30){
+    ++m;
+    d = 1;
+  }else if(d==31){
+    ++m;
     d = 1;
   }else{
-    d+=n;
+    d+=1;
   }
+  return *this;
+}
+
+void Date::add_day(const int n){
+  for(int i =0;i<n;++i)
+    ++(*this);
 }
 
 int main(int argc,char *argv[]){
   try{
     Date today{Year(2022),Month::may,28};
     std::cout<<today.year()<<"/"<<today.month()<<"/"<<today.day()<<"\n";
-    today.add_day(5);
+    today.add_day(35);
     std::cout<<today.year()<<"/"<<today.month()<<"/"<<today.day()<<"\n";
   }catch(const std::runtime_error& exp){
     std::cerr<<exp.what()<<"\n";
