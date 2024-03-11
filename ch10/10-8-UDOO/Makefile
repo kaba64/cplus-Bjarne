@@ -1,4 +1,4 @@
-CC := g++ -std=c++2a -Wall
+CC := g++ -std=c++20
 TARGET_EXEC := out
 CFLAGS  := -Wall
 SRCS := user-defined-output.cpp
@@ -7,7 +7,7 @@ OBJS=$(SRCS:.cpp=.o)
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $^ -o $@
 %.o: %.cpp
-        $(CC) -c $< -o $@
+	$(CC) -c $< -o $@
 clean:
 	rm $(OBJS) $(TARGET_EXEC) *~
 run:
