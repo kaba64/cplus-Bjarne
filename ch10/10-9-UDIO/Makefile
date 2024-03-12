@@ -1,14 +1,20 @@
-CC := g++ -std=c++2a -Wall
+CC := g++ -std=c++20
 TARGET_EXEC := out
 CFLAGS  := -Wall
-SRCS := user-defined-output.cpp
-OBJS=$(SRCS:.cpp=.o)
+SRC_DIR = .
+OBJ_DIR = obj
 
-$(TARGET_EXEC): $(OBJS)
+SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
+EXECUTABLE = myprogram
+
+$(EXECUTABLE): $(OBJ_FILES)
 	$(CC) $^ -o $@
-%.o: %.cpp
-        $(CC) -c $< -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	mkdir -p $(dir $@)
+	$(CC) -c $< -o $@
 clean:
-	rm $(OBJS) $(TARGET_EXEC) *~
+	rm -r $(OBJ_DIR) $(EXECUTABLE) *~
 run:
-	@./$(TARGET_EXEC)
+	@./$(EXECUTABLE)
