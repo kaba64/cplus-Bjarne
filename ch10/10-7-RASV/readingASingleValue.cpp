@@ -14,23 +14,23 @@ bool stringIsdigit(std::string chIn){
 
 template<typename T> void skip_to_next(std::istream & cin,T & singleInput,bool & flag){
   int count{0}; /*Read 10 times*/
-  if(std::cin.fail()){
-    std::cin.clear();
-    for(std::string ch;(std::cin>>ch && count<10);){
+  if(cin.fail()){
+    cin.clear();
+    for(std::string ch;(cin>>ch && count<10);){
       count+=1;
       if(stringIsdigit(ch) || static_cast<char>(*ch.c_str())=='-'){
 	singleInput =  std::stoi(ch);
 	return;
-      }else if(std::cin.eof()){
+      }else if(cin.eof()){
 	flag = false;
 	return;
-      }else if(std::cin.bad()){
+      }else if(cin.bad()){
 	throw std::runtime_error("bad input");
 	flag = false;
 	return;
       }
     }
-  }else if(std::cin.bad()){
+  }else if(cin.bad()){
     throw std::runtime_error("bad input");
     flag = false;
     return;
