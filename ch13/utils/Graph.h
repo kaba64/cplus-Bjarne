@@ -122,7 +122,7 @@ protected:
         ls(0),
         fcolor(Color::invisible) { }
     
-    void add(Point p){ points.push_back(p); }
+    virtual void add(Point p){ points.push_back(p); }
     void set_point(int i, Point p) { points[i] = p; }
 public:
     void draw() const;					// deal with color and draw_lines
