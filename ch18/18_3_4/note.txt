@@ -1,0 +1,2 @@
+use -fno-elide-constructors flag to disable the Return Value Optimization (RVO)
+by the compiler in order to invoke the move constructor.
