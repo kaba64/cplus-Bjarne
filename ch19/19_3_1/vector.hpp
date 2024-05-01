@@ -30,7 +30,7 @@ template<typename T> vector<T>& vector<T>::operator =(const vector<T>& src){
     sz=src.sz;
     return *this;
   }
-  double* p = new T[src.sz];
+  T* p = new T[src.sz];
   std::copy(src.elem,src.elem+src.sz,p);
   delete[] elem;
   elem = p;
@@ -65,7 +65,7 @@ template<typename T> void vector<T>::reserve(size_t newalloc){
     }
     return;
   }
-  double* p = new T[newalloc];
+  T* p = new T[newalloc];
   for(size_t i=0;i<sz;++i)
     p[i]=elem[i];
   delete[] elem;

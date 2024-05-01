@@ -5,7 +5,7 @@
 template<typename T> class vector{
 public:
   vector();
-  explicit vector(size_t s,T value=0);
+  explicit vector(size_t s,T value=T{});
   vector(std::initializer_list<T> lst);
   vector(const vector& src);                         /*copy constructor*/
   vector& operator =(const vector& src);             /*copy assignment*/
