@@ -7,7 +7,7 @@ template<typename T,typename A> vector<T,A>::vector():sz(0),elem(nullptr),space(
 /*Constructor*/
 template<typename T,typename A> vector<T,A>::vector(size_t s,T value)
   :sz(s),elem(alloc.allocate(s)),space(s){
-  std::uninitialized_fill(&elem,&elem[sz],value); /*initialize elements*/ 
+  std::uninitialized_fill(elem,&elem[sz],value); /*initialize elements*/ 
 }
 /*copy constructor*/
 template<typename T,typename A> vector<T,A>::vector(const vector<T,A>& src):sz(src.sz),elem(alloc.allocate(sz)),space(sz){
