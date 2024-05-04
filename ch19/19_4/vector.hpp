@@ -1,12 +1,16 @@
 #include <iostream>
 #include <exception>
+#include <limits>
 #include "vector.h"
 
+size_t reasonable_size = std::numeric_limits<size_t>::max();
 /*Default constructor*/
 template<typename T,typename A> vector<T,A>::vector():sz(0),elem(nullptr),space(0){}
 /*Constructor*/
 template<typename T,typename A> vector<T,A>::vector(size_t s,T value)
   :sz(s),elem(alloc.allocate(s)),space(s){
+  if(sz<0 || sz>=reasonable_size)
+    throw std::length_error("Size of the vector is too large");
   std::uninitialized_fill(elem,&elem[sz],value); /*initialize elements*/ 
 }
 /*copy constructor*/
