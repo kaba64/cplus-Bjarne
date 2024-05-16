@@ -48,15 +48,17 @@ template<typename T,typename A> vector<T,A>& vector<T,A>::operator =(const vecto
 }
 /*move assignment*/
 template<typename T,typename A> vector<T,A>& vector<T,A>::operator =(vector<T,A>&& src){
-  std::destroy(elem,&elem[space]);
-  alloc.deallocate(elem,capacity());
-  elem = src.elem;
-  sz = src.sz;
-  space=src.space;
-  src.elem=nullptr;
-  src.sz=0;
-  src.space=0;
-  return *this;
+  if(this!=&src){
+    std::destroy(elem,&elem[space]);
+    alloc.deallocate(elem,capacity());
+    elem = src.elem;
+    sz = src.sz;
+    space=src.space;
+    src.elem=nullptr;
+    src.sz=0;
+    src.space=0;
+  }
+  return *this;  
 }
 /*get rvalu*/
 template<typename T,typename A> T vector<T,A>::operator [](size_t i)const{
